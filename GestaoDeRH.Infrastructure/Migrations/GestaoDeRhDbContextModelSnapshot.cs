@@ -40,6 +40,31 @@ namespace GestaoDeRH.Infra.Migrations
                     b.ToTable("Pontos");
                 });
 
+            modelBuilder.Entity("GestaoDeRH.Dominio.Ferias.SolicitarFerias", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ColaboradorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DataFimFerias")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataInicioFerias")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Solicitacao")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ColaboradorId");
+
+                    b.ToTable("Ferias", (string)null);
+                });
+
             modelBuilder.Entity("GestaoDeRH.Dominio.FolhaDePagamento.Holerite", b =>
                 {
                     b.Property<int>("Id")
@@ -226,6 +251,17 @@ namespace GestaoDeRH.Infra.Migrations
                     b.HasOne("GestaoDeRH.Dominio.Pessoas.Colaborador", "Colaborador")
                         .WithMany()
                         .HasForeignKey("ColaboradorId");
+
+                    b.Navigation("Colaborador");
+                });
+
+            modelBuilder.Entity("GestaoDeRH.Dominio.Ferias.SolicitarFerias", b =>
+                {
+                    b.HasOne("GestaoDeRH.Dominio.Pessoas.Colaborador", "Colaborador")
+                        .WithMany()
+                        .HasForeignKey("ColaboradorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Colaborador");
                 });
