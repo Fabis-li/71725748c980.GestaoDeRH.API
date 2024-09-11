@@ -26,4 +26,16 @@
     <ProjectReference Include="..\GestaoDeRH.Domain\GestaoDeRH.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Ferias\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Ferias\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Ferias\**" />
+  </ItemGroup>
+
 </Project>
