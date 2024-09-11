@@ -1,10 +1,12 @@
 using GestaoDeRH.Aplicacao.ControlePonto;
 using GestaoDeRH.Aplicacao.ControlePonto.Interfaces;
+using GestaoDeRH.Aplicacao.Ferias.Interfaces;
 using GestaoDeRH.Aplicacao.FolhaDePagamento;
 using GestaoDeRH.Aplicacao.FolhaDePagamento.Interfaces;
 using GestaoDeRH.Aplicacao.Notificacoes;
 using GestaoDeRH.Aplicacao.Recrutamento;
 using GestaoDeRH.Aplicacao.Recrutamento.Interfaces;
+using GestaoDeRH.Aplicacao.SolicitacaoFerias;
 using GestaoDeRH.Dominio.ControlePonto;
 using GestaoDeRH.Dominio.Interfaces;
 using GestaoDeRH.Infra.BancoDeDados;
@@ -23,6 +25,7 @@ builder.Services.AddDbContext<GestaoDeRhDbContext>(options =>
 //Incluir repositorios
 builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioGenerico<>));
 builder.Services.AddScoped<IPontoRepositorio, PontosRepositorio>();
+builder.Services.AddScoped<IRepositorioSolicitarFerias, SolicitacaoFeriasRepositorio>();
 
 //Incluir Aplicacao
 builder.Services.AddScoped<IMarcacaoPonto, MarcacaoPonto>();
@@ -34,6 +37,10 @@ builder.Services.AddScoped<INotificarColaborador, NotificarColaborador>();
 builder.Services.AddScoped<ICriarVaga, CriarVaga>();
 builder.Services.AddScoped<INovoCandidato, NovoCandidato>();
 builder.Services.AddScoped<IAprovarCandidato, AprovarCandidato>();
+
+builder.Services.AddScoped<ISolicitarFerias, SolicitarFeriasService>();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
