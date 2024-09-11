@@ -24,4 +24,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Repositorios\FeriasRepositorio.cs" />
+  </ItemGroup>
+
 </Project>
